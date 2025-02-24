@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     POSTGRES_USER: str
     POSTGRES_PASSWORD: str
 
-    model_config = SettingsConfigDict(".env")
+    model_config = SettingsConfigDict(env_file=".env")
 
     def get_db_postgres_url(self):
         return f"postgresql://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.DB_HOST}:{self.DB_PORT}/{self.POSTGRES_DB}"
